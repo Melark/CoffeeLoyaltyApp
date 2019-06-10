@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:cuppa_joe/ui/animations/slide_in_animator.dart';
+import 'package:cuppa_joe/ui/widgets/background_painter.dart';
 import 'package:cuppa_joe/ui/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,17 +12,15 @@ class LoyaltyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightBlue,
-        body: Container(
+        appBar: AppBar(backgroundColor: Color(0xff00162B)),
+        body: BackgroundPainter(
+            child: Container(
           child: Center(
               child: Column(
             children: <Widget>[
+              Expanded(flex: 3, child: headerSection()),
               Expanded(
-                flex: 2,
-                child: headerSection()
-              ),
-              Expanded(
-                flex: 3,
+                flex: 5,
                 child: coffeeBeansSection(),
               ),
               Expanded(
@@ -30,96 +29,103 @@ class LoyaltyPage extends StatelessWidget {
               ),
             ],
           )),
-        ));
+        )));
   }
-
 
   Widget headerSection() {
     return Container(
       child: Column(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Card(
-                      child: Container(
-                        height: 200,
-                        child: AppLogo(),
-                      ),
-                    ),
-                  ],
-                ),
+        children: <Widget>[
+          SizedBox(
+            height: 25,
+          ),
+          Container(
+            height: 200,
+            child: AppLogo(),
+          ),
+        ],
+      ),
     );
   }
 
   Widget coffeeBeansSection() {
     return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Center(
-              child: Text("You need 2 more Cuppas then your next one is FREE!",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
+      padding: EdgeInsets.all(40),
+      child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 30,
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SlideInAnimator(
-                child: coffeeBean(true),
-                delay: 200,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SlideInAnimator(
+                  child: coffeeBean(true),
+                  delay: 200,
+                ),
+                SlideInAnimator(
+                  child: coffeeBean(true),
+                  delay: 200,
+                ),
+                SlideInAnimator(
+                  child: coffeeBean(true),
+                  delay: 200,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SlideInAnimator(
+                  child: coffeeBean(true),
+                  delay: 400,
+                ),
+                SlideInAnimator(
+                  child: coffeeBean(true),
+                  delay: 400,
+                ),
+                SlideInAnimator(
+                  child: coffeeBean(true),
+                  delay: 400,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SlideInAnimator(
+                  child: coffeeBean(true),
+                  delay: 600,
+                ),
+                SlideInAnimator(
+                  child: coffeeBean(false),
+                  delay: 600,
+                ),
+                SlideInAnimator(
+                  child: coffeeBean(false),
+                  delay: 600,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Center(
+                child: Text(
+                    "You need 2 more Cuppas then your next one is FREE!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black)),
               ),
-              SlideInAnimator(
-                child: coffeeBean(true),
-                delay: 200,
-              ),
-              SlideInAnimator(
-                child: coffeeBean(true),
-                delay: 200,
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SlideInAnimator(
-                child: coffeeBean(true),
-                delay: 400,
-              ),
-              SlideInAnimator(
-                child: coffeeBean(true),
-                delay: 400,
-              ),
-              SlideInAnimator(
-                child: coffeeBean(true),
-                delay: 400,
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SlideInAnimator(
-                child: coffeeBean(true),
-                delay: 600,
-              ),
-              SlideInAnimator(
-                child: coffeeBean(false),
-                delay: 600,
-              ),
-              SlideInAnimator(
-                child: coffeeBean(false),
-                delay: 600,
-              ),
-            ],
-          )
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -130,7 +136,7 @@ class LoyaltyPage extends StatelessWidget {
       child: Icon(
         FontAwesomeIcons.mugHot,
         size: 30,
-        color: isClaimed ? Colors.white : Colors.grey,
+        color: isClaimed ? Color(0xff36454f) : Colors.grey,
       ),
     );
   }
@@ -141,7 +147,14 @@ class LoyaltyPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           RaisedButton(
-            child: Text("Coffeee Papi"),
+            color: Color(0xff36454f),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
+              child: Text(
+                "Coffeee Time",
+                style: TextStyle(color: Color.fromARGB(255, 237, 209, 146)),
+              ),
+            ),
             onPressed: () {},
           )
         ],
