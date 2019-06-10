@@ -116,7 +116,7 @@ class LoyaltyPage extends StatelessWidget {
               padding: EdgeInsets.all(20),
               child: Center(
                 child: Text(
-                    "You need 2 more Cuppas then your next one is FREE!",
+                    "Drink 2 more cups to get a free Cuppa on us!",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 20,
